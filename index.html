@@ -5,82 +5,175 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Torikul TV Premium</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
 </head>
 
 <body>
 
-<header>
+<div id="app">
+
+<header class="topbar">
 
 <div class="logo">
-📺 Torikul TV Premium
+
+📺 Torikul TV
+
+<span>Premium</span>
+
 </div>
+
+<div class="search-box">
 
 <input
 type="text"
-placeholder="Search Channel..."
-class="search">
+id="searchInput"
+placeholder="Search Channel...">
+
+</div>
 
 </header>
 
-<section class="hero">
+<main class="layout">
 
-<h1>Welcome to Torikul TV</h1>
+<section class="player-area">
 
-<p>Fast • Premium • IPTV Player</p>
+<div class="video-wrapper">
 
-<button>
-Watch Now
+<video
+id="video"
+controls
+autoplay
+playsinline>
+
+</video>
+
+</div>
+
+<div class="player-info">
+
+<h2 id="channelTitle">
+
+Select a Channel
+
+</h2>
+
+<p>
+
+Live IPTV Streaming
+
+</p>
+
+</div>
+
+</section>
+
+<aside class="sidebar">
+
+<div class="category-title">
+
+Categories
+
+</div>
+
+<div id="categoryList">
+
+<button class="active">
+
+All
+
 </button>
 
-</section>
+<button>
 
-<section class="categories">
+Bangla
 
-<div>Sports</div>
+</button>
 
-<div>News</div>
+<button>
 
-<div>Movies</div>
+Sports
 
-<div>Kids</div>
+</button>
 
-<div>Music</div>
+<button>
 
-<div>Islamic</div>
+News
 
-</section>
+</button>
 
-<section class="channels">
+<button>
 
-<div class="card">
+Movies
 
-<img src="https://placehold.co/300x170">
+</button>
 
-<h3>Sample Channel</h3>
+<button>
 
-</div>
+Kids
 
-<div class="card">
+</button>
 
-<img src="https://placehold.co/300x170">
+<button>
 
-<h3>Coming Soon</h3>
+Islamic
 
-</div>
-
-<div class="card">
-
-<img src="https://placehold.co/300x170">
-
-<h3>Coming Soon</h3>
+</button>
 
 </div>
 
+</aside>
+
+</main>
+
+<section class="channel-section">
+
+<h2>
+
+Live Channels
+
+</h2>
+
+<div
+id="channelGrid"
+class="grid">
+
+<!-- Channels loaded from channels.json -->
+
+</div>
+
 </section>
+
+</div>
 
 <script src="script.js"></script>
 
 </body>
-</html>
+<div id="loading" class="loading-screen">
+
+<div class="loader"></div>
+
+<h2>Loading Channels...</h2>
+
+<p>Please wait...</p>
+
+</div>
+
+<div id="toast"></div>
+
+<footer class="footer">
+
+<p>
+
+© 2026 Torikul TV Premium
+
+</p>
+
+</footer>
