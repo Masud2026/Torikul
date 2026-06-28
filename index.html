@@ -1,179 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Torikul TV Premium</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
-
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torikul IPTV Premium</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
-
 <body>
 
-<div id="app">
-
-<header class="topbar">
-
-<div class="logo">
-
-📺 Torikul TV
-
-<span>Premium</span>
-
-</div>
-
-<div class="search-box">
-
-<input
-type="text"
-id="searchInput"
-placeholder="Search Channel...">
-
-</div>
-
-</header>
-
-<main class="layout">
-
-<section class="player-area">
-
-<div class="video-wrapper">
-
-<video
-id="video"
-controls
-autoplay
-playsinline>
-
-</video>
-
-</div>
-
-<div class="player-info">
-
-<h2 id="channelTitle">
-
-Select a Channel
-
-</h2>
-
-<p>
-
-Live IPTV Streaming
-
-</p>
-
-</div>
-
-</section>
-
-<aside class="sidebar">
-
-<div class="category-title">
-
-Categories
-
-</div>
-
-<div id="categoryList">
-
-<button class="active">
-
-All
-
-</button>
-
-<button>
-
-Bangla
-
-</button>
-
-<button>
-
-Sports
-
-</button>
-
-<button>
-
-News
-
-</button>
-
-<button>
-
-Movies
-
-</button>
-
-<button>
-
-Kids
-
-</button>
-
-<button>
-
-Islamic
-
-</button>
-
-</div>
-
-</aside>
-
-</main>
-
-<section class="channel-section">
-
-<h2>
-
-Live Channels
-
-</h2>
-
-<div
-id="channelGrid"
-class="grid">
-
-<!-- Channels loaded from channels.json -->
-
-</div>
-
-</section>
-
-</div>
-
-<script src="script.js"></script>
-
+    <!-- টপ নেভিগেশন বার -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <button class="refresh-btn"><i class="fas fa-sync-alt"></i></button>
+            <span class="logo-text">Torikul IPTV <span class="premium-badge">Premium</span></span>
+        </div>
+        <div class="nav-right">
+            <i class="fas fa-moon night-mode-icon"></i>
+        </div>
+    </nav>
+
+    <!-- প্রধান ভিডিও প্লেয়ার স্ক্রিন (উপরিভাগ) -->
+    <div class="video-section">
+        <video id="video-player" controls autoplay poster="https://via.placeholder.com/800x450/000000/ffffff?text=Select+a+Channel"></video>
+        <div class="channel-info-bar">
+            <span id="current-channel-title">কোনো চ্যানেল সিলেক্ট করা নেই</span>
+        </div>
+    </div>
+
+    <!-- নোটিউট বোর্ড (স্ক্রোলিং নোটিশ) -->
+    <div class="notice-bar">
+        <span class="notice-badge">NOTICE</span>
+        <marquee behavior="scroll" direction="left">আমাদের আইপিটিভি সাইটে আপনাকে স্বাগতম! যেকোনো চ্যানেল নিরবচ্ছিন্নভাবে দেখতে হাই-স্পিড ইন্টারনেট ব্যবহার করুন।</marquee>
+    </div>
+
+    <!-- কন্ট্রোল এবং ফিল্টার এরিয়া (সার্চ, সার্ভার, ক্যাটাগরি) -->
+    <div class="control-container">
+        <!-- সার্চ বার -->
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="search-input" placeholder="Search Channel...">
+        </div>
+
+        <!-- সার্ভার বাটন সমূহ -->
+        <div class="server-selection">
+            <button class="server-btn">Server 1</button>
+            <button class="server-btn active">Server 2</button>
+            <button class="server-btn">Server 3</button>
+            <button class="server-btn">Server 4</button>
+            <button class="server-btn">Server 5</button>
+        </div>
+
+        <!-- গোল গোল ক্যাটাগরি ট্যাব সমূহ -->
+        <div class="category-tabs" id="category-tabs-container">
+            <button class="tab-btn active" data-category="all">All</button>
+            <button class="tab-btn" data-category="fav"><i class="fas fa-heart"></i> Favorites</button>
+        </div>
+    </div>
+
+    <!-- চ্যানেলের প্রিমিয়াম গ্রিড ভিউ (নিচে ৩ কলামের চ্যানেলের লিস্ট) -->
+    <div class="grid-container">
+        <div class="channel-grid" id="channel-grid">
+            <!-- চ্যানেল কার্ডগুলো এখানে ডাইনামিকালি লোড হবে -->
+        </div>
+    </div>
+
+    <!-- যোগাযোগ ও ক্রেডিট ফুটার সেকশন -->
+    <footer class="iptv-footer">
+        <div class="footer-content">
+            <p class="developer-credit">Designed & Developed by <span class="dev-name">Torikul Islam</span></p>
+            <p class="footer-text">যেকোনো সমস্যা বা চ্যানেল অ্যাড করতে নিচে যোগাযোগ করুন:</p>
+            
+            <div class="contact-links">
+                <a href="https://www.facebook.com/share/14efskEraf5/" target="_blank" class="contact-card facebook">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://t.me/torikulking" target="_blank" class="contact-card telegram">
+                    <i class="fab fa-telegram-plane"></i> Telegram
+                </a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2026 Torikul IPTV. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-<div id="loading" class="loading-screen">
-
-<div class="loader"></div>
-
-<h2>Loading Channels...</h2>
-
-<p>Please wait...</p>
-
-</div>
-
-<div id="toast"></div>
-
-<footer class="footer">
-
-<p>
-
-© 2026 Torikul TV Premium
-
-</p>
-
-</footer>
+</html>
