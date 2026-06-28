@@ -1,0 +1,93 @@
+body{
+margin:0;
+padding:0;
+background:#0b0b0b;
+color:white;
+font-family:Arial,sans-serif;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+background:#111;
+position:sticky;
+top:0;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#00bfff;
+}
+
+.search{
+padding:10px;
+border:none;
+border-radius:8px;
+width:180px;
+}
+
+.hero{
+text-align:center;
+padding:60px 20px;
+background:linear-gradient(135deg,#0077ff,#111);
+}
+
+.hero h1{
+font-size:36px;
+margin-bottom:10px;
+}
+
+.hero button{
+padding:12px 25px;
+border:none;
+border-radius:10px;
+background:#00bfff;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+.categories{
+display:flex;
+overflow:auto;
+gap:10px;
+padding:15px;
+}
+
+.categories div{
+background:#222;
+padding:10px 20px;
+border-radius:25px;
+white-space:nowrap;
+}
+
+.channels{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+padding:20px;
+}
+
+.card{
+background:#181818;
+border-radius:12px;
+overflow:hidden;
+transition:.3s;
+}
+
+.card:hover{
+transform:scale(1.03);
+}
+
+.card img{
+width:100%;
+display:block;
+}
+
+.card h3{
+padding:10px;
+margin:0;
+}
